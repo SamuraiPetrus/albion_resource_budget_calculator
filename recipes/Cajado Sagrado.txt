@@ -1,0 +1,19 @@
+
+    
+
+RECEITA PARA PRODUZIR 10 UNIDADES DE Cajado Sagrado:
+
+Custo de produção: 29904.0 moedas
+    
+Tábuas (Grau 4):  160 unidades
+Tronco (Grau 4):  320 unidades
+Tábuas (Grau 3):  160 unidades
+Tronco (Grau 3):  320 unidades
+Tábuas (Grau 2):  160 unidades
+Tronco (Grau 2):  160 unidades
+Tecido (Grau 4):  96 unidades
+Algodão (Grau 4):  192 unidades
+Tecido (Grau 3):  96 unidades
+Algodão (Grau 3):  192 unidades
+Tecido (Grau 2):  96 unidades
+Algodão (Grau 2):  96 unidades

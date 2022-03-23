@@ -1,6 +1,6 @@
-IMPROVEMENT_MATERIAL_LEVEL = 2
+import json
 
-def createArtifact(artifact_name = 'artefato', artifact_quantity = 0, artifact_level = 0):
+def createArtifact( artifact_name = 'artefato', artifact_quantity = 0, artifact_level = 0 ):
     '''
     createArtifact
 
@@ -31,7 +31,7 @@ def createArtifact(artifact_name = 'artefato', artifact_quantity = 0, artifact_l
     
     return artifact
 
-def registerMaterialsToArtifact(materials, artifact):
+def registerMaterialsToArtifact( materials, artifact ):
     '''
     registerMaterialsToArtifact
 
@@ -47,12 +47,25 @@ def registerMaterialsToArtifact(materials, artifact):
 
         materials_to_build_artifact.append({
             'name': material_name,
-            'quantity': material_quantity,
+            'quantity': material_quantity * artifact.get('quantity'),
             'level': material_level,
         })
-        print(materials_to_build_artifact)
     
     for material in materials_to_build_artifact:
         artifact.get('materials').append(createArtifact(material.get('name'), material.get('quantity'), material.get('level')))
 
     return artifact
+
+def saveArtifact( artifact ):
+    '''
+    saveArtifact
+
+    This function will save an artifact to a json file.
+    '''
+    artifact_json_file = open('artifact.json', 'w+', encoding='utf-8')
+    json.dump(artifact, artifact_json_file, indent=4)
+    artifact_json_file.close()
+
+    artifact_json_file = open('artifacts/'+artifact.get('name')+'.json', 'w+', encoding='utf-8')
+    json.dump(artifact, artifact_json_file, indent=4)
+    artifact_json_file.close()

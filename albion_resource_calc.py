@@ -1,19 +1,25 @@
+import json
+
 try:
-    from artifact import createArtifact
+    from artifact import createArtifact, saveArtifact
     from budget import calculateBudget
+    from recipe import saveRecipe
 
-    print('Albion Crafting Calculator\nDeveloped by: SamuraiPetrus\nv1.0\n\n')
+    print('\n\nAlbion Crafting Calculator\n\nDeveloped by: SamuraiPetrus\n\nv1.0\n')
 
-    artifact = createArtifact( str(input('Qual o nome do artefato que quer produzir?:  ')) )
+    try:
+        artifact_json_file = open('artifact.json', 'r', encoding='utf-8')
+        artifact = json.load(artifact_json_file)
+    except:
+        getting_artifact_from_json = False
+        print('Nenhum arquivo json encontrado, criando um artefato do zero...\n')
+        artifact = createArtifact( str(input('Qual o nome do artefato que quer produzir?:  ')) )
+        
+
     budget = calculateBudget( artifact )
-
-    print(artifact)
-
-    print('\n\nRECEITA DO ARTEFATO:\n')
-
-    print('Custo de produção:  ', budget.get('cost'), ' moedas')
-    for material in budget.get('materials'):
-        print(material, ':  ', budget.get('materials').get(material), ' unidades')
+    recipe = saveRecipe( artifact, budget )
+    saveArtifact( artifact )
+    print(recipe)
 
 except ImportError:
     print('Erro ao tentar importar módulos necessários.')
